@@ -9,7 +9,7 @@ urlpatterns = [
     path('comments',views.CommentList, name='comments'),
     path('comments/<int:pk>',views.commentDetails,name='comment'),              
     path('<int:pk>/comments',views.commentDetails,name='PostDetails'),
-    path('users',views.UserList,name='users'),
-    path('users/<int:pk>',views.UserDetails,name='UserDetails'),
+    # path('users',views.UserList,name='users'),
+    # path('users/<int:pk>',views.UserDetails,name='UserDetails'),
 
 ]
