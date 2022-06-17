@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BlogApi',
-    'rest_framework'
+    'rest_framework',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -136,3 +140,20 @@ prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
 ALLOWED_HOSTS = ['*']
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:4200",
+    "http://127.0.0.1:9000",
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
