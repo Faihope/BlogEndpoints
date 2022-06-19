@@ -26,7 +26,7 @@ class PostSerializer(serializers.ModelSerializer):
         
         
 class CategorySerializer(serializers.ModelSerializer):
-    post=PostSerializer(read_only=True,many=True)
+    # post=PostSerializer(read_only=True,many=True)
 
     class Meta:
         model = Category
