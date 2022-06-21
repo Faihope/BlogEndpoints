@@ -5,14 +5,15 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     name= models.CharField(max_length=100)
-    description=models.CharField(max_length=200)
+    description=models.CharField(max_length=2000)
     def __str__(self):
         return self.name
     
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    # author=models.ForeignKey(User,on_delete=models.CASCADE)
-    content = models.CharField(max_length=200)
+    image=models.ImageField(null=True,blank=False)
+    owner = models.ForeignKey(User , related_name='user', on_delete=models.CASCADE)
+    content = models.CharField(max_length=2000)
     createdon = models.DateTimeField(auto_now_add=True)
     category= models.ForeignKey(Category, on_delete=models.CASCADE, related_name='post')
     
