@@ -12,7 +12,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     image=models.ImageField(null=True,blank=False)
-    owner = models.ForeignKey(User , related_name='user', on_delete=models.CASCADE)
+    # owner = models.ForeignKey(User , related_name='user', on_delete=models.CASCADE)
     content = models.CharField(max_length=2000)
     createdon = models.DateTimeField(auto_now_add=True)
     category= models.ForeignKey(Category, on_delete=models.CASCADE, related_name='post')
