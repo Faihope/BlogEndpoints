@@ -36,11 +36,8 @@ def PostList(request):
     if request.method=='POST':
         posts=Post.objects.all()
         serializer = PostSerializer(data=request.data)
-        
         if serializer.is_valid():
-            # user = User.objects.get(id=request.user.id)
             serializer.save()
-           
             return Response(serializer.data)
         
 @api_view(['GET','PUT','DELETE'])       
@@ -53,7 +50,7 @@ def PostDetails(request,pk):
         post = Post.objects.get(pk=pk)
         serializer= PostSerializer(post,data=request.data)
         if serializer.is_valid():
-            serializer.save(owner = request.user)
+            serializer.save()
             return Response(serializer.data)
     if request.method=='DELETE':
         post=Post.objects.get(pk=pk)
