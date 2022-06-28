@@ -52,7 +52,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         
 class CommentSerializer(serializers.ModelSerializer):
-    # author=UserSerializer(read_only=True,many=True)
     class Meta:
         model = Comment
         fields=('__all__')
@@ -61,10 +60,9 @@ class CommentSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(read_only=True,many=True)
     # user = UserSerializer(read_only=True,many=True)
-    owner_name = serializers.CharField(source='owner.username', read_only=True)
     class Meta:
         model=  Post
-        fields=('id','title','content','createdon','category','image','owner','comments','owner_name')
+        fields=('id','title','content','createdon','category','image','comments',)
         
         
 class CategorySerializer(serializers.ModelSerializer):
